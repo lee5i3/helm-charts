@@ -58,9 +58,9 @@ readinessprobe:
   periodSeconds: 10
 
 resources:
-  limits:
+  limits: {}
   #  cpu: 100m
-    memory: 2Gi
+  #  memory: 2Gi
   # requests:
   #  cpu: 100m
   #  memory: 2Gi  
