@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  octopus-deploy:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-04-03T20:34:12.232484442Z"
+    description: A Helm chart for Kubernetes
+    digest: 9ed974b450fc449f6756bf1ef31aa34552bda664119efcd46d1daf437e99666c
+    name: octopus-deploy
+    type: application
+    urls:
+    - https://github.com/lee5i3/helm-charts/releases/download/octopus-deploy-0.1.0/octopus-deploy-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-04-03T20:34:12.232490142Z"
