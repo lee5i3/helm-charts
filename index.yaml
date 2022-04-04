@@ -2,6 +2,14 @@ apiVersion: v1
 entries:
   mssql:
   - apiVersion: v2
+    created: "2022-04-04T01:36:33.092657543Z"
+    description: Microsoft SQL Server
+    digest: 51fc66e4d5e8edc6272ef8debdd5b442f4f398b191a5d92a0f5e724b4014b279
+    name: mssql
+    urls:
+    - https://github.com/lee5i3/helm-charts/releases/download/mssql-1.0.3/mssql-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
     created: "2022-04-03T21:11:32.296121725Z"
     description: Microsoft SQL Server
     digest: 22739f18ce252fdba9caf2e63f2ef18ab32276e17e1083ba769aaccf623ef5b8
@@ -18,6 +26,14 @@ entries:
     - https://github.com/lee5i3/helm-charts/releases/download/mssql-1.0.0/mssql-1.0.0.tgz
     version: 1.0.0
   octopus-deploy:
+  - apiVersion: v2
+    created: "2022-04-04T01:36:33.238099489Z"
+    description: Octopus Deploy
+    digest: d7b11de4364ff9a75da542d53da33b450ae7a48273995e2be079170890a1b8d7
+    name: octopus-deploy
+    urls:
+    - https://github.com/lee5i3/helm-charts/releases/download/octopus-deploy-0.1.2/octopus-deploy-0.1.2.tgz
+    version: 0.1.2
   - apiVersion: v2
     created: "2022-04-04T01:17:05.905383009Z"
     dependencies:
@@ -40,4 +56,4 @@ entries:
     urls:
     - https://github.com/lee5i3/helm-charts/releases/download/octopus-deploy-0.1.0/octopus-deploy-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-04T01:17:05.905394309Z"
+generated: "2022-04-04T01:36:33.238353991Z"
