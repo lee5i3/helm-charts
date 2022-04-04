@@ -19,6 +19,18 @@ entries:
     version: 1.0.0
   octopus-deploy:
   - apiVersion: v2
+    created: "2022-04-04T01:17:05.905383009Z"
+    dependencies:
+    - name: mssql
+      repository: https://lee5i3.github.io/helm-charts
+      version: 1.0.1
+    description: A Helm chart for Kubernetes
+    digest: 31ba5ce774b87102716855b7c3924c861ac78830aeed82660bfc51ee6d827968
+    name: octopus-deploy
+    urls:
+    - https://github.com/lee5i3/helm-charts/releases/download/octopus-deploy-0.1.1/octopus-deploy-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2022-04-03T20:34:12.232484442Z"
     description: A Helm chart for Kubernetes
@@ -28,4 +40,4 @@ entries:
     urls:
     - https://github.com/lee5i3/helm-charts/releases/download/octopus-deploy-0.1.0/octopus-deploy-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-03T21:11:32.296130725Z"
+generated: "2022-04-04T01:17:05.905394309Z"
