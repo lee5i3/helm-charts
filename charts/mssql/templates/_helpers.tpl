@@ -27,8 +27,8 @@ If release name contains chart name it will be used as a full name.
 Create the name for the SA password secret.
 */}}
 {{- define "mssql.secret" -}}
-{{- if .Values.existingSecret -}}
-  {{- .Values.existingSecret -}}
+{{- if .Values.secret.existingSecret -}}
+  {{- .Values.secret.existingSecret -}}
 {{- else -}}
   {{- include "mssql.fullname" . -}}-secret
 {{- end -}}
@@ -38,8 +38,8 @@ Create the name for the SA password secret.
 Create the name for the SA password secret key.
 */}}
 {{- define "mssql.passwordKey" -}}
-{{- if .Values.existingSecret -}}
-  {{- .Values.existingSecretKey -}}
+{{- if .Values.secret.existingSecret -}}
+  {{- .Values.secret.existingSecretKey -}}
 {{- else -}}
   sapassword
 {{- end -}}

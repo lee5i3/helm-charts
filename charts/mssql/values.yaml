@@ -6,8 +6,8 @@ agent:
   enabled: false
 
 # Override sapassword in templates/secret.yaml
-# sapassword: "Password01!"
 secret:
+  # sapassword: "Password01!"
   existingSecret: ""
   existingSecretKey: sapassword
 
