@@ -2,6 +2,14 @@ apiVersion: v1
 entries:
   mssql:
   - apiVersion: v2
+    created: "2022-04-04T01:38:58.734836518Z"
+    description: Microsoft SQL Server
+    digest: 30517b9a90e738b257243562f830842797306a9494b2eb64cc2f634a72d79528
+    name: mssql
+    urls:
+    - https://github.com/lee5i3/helm-charts/releases/download/mssql-1.0.4/mssql-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
     created: "2022-04-04T01:36:33.092657543Z"
     description: Microsoft SQL Server
     digest: 51fc66e4d5e8edc6272ef8debdd5b442f4f398b191a5d92a0f5e724b4014b279
@@ -56,4 +64,4 @@ entries:
     urls:
     - https://github.com/lee5i3/helm-charts/releases/download/octopus-deploy-0.1.0/octopus-deploy-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-04T01:36:33.238353991Z"
+generated: "2022-04-04T01:38:58.734859719Z"
