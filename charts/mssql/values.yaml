@@ -1,10 +1,3 @@
-edition: Express
-collation: SQL_Latin1_General_CP1_CI_AS
-lcid: 1033
-hadr: 0
-agent:
-  enabled: false
-
 # Override sapassword in templates/secret.yaml
 secret:
   sapassword: "Password01!"
@@ -21,11 +14,6 @@ deployment:
   annotations: {}
   labels: {}
 
-## Use an alternate scheduler, e.g. "stork".
-## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
-##
-# schedulerName: "default-scheduler"
-
 ### Service
 service:
   annotations: {}
@@ -39,10 +27,6 @@ service:
 
 ## Persistent Volume
 persistence:
-  enabled: true
-  # existingDataClaim:
-  storageClass: ""
-  dataAccessMode: ReadWriteOnce
   dataSize: 50Gi
 
 livenessprobe:
@@ -59,13 +43,3 @@ resources:
   # requests:
   #  cpu: 100m
   #  memory: 2Gi
-
-nodeSelector: {}
-  # kubernetes.io/hostname: minikube
-
-tolerations: []
-
-affinity: {}
-
-securityContext: {}
-  # runAsUser: 1000

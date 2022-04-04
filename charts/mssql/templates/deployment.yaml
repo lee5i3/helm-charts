@@ -15,57 +15,42 @@ metadata:
 {{ toYaml .Values.deployment.annotations | indent 4 }}
 {{- end }}
 spec:
-  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: {{ template "mssql.name" . }}
       release: {{ .Release.Name }}
+  replicas: 1
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
         app: {{ template "mssql.name" . }}
         release: {{ .Release.Name }}
     spec:
-      {{- if .Values.schedulerName }}
-      schedulerName: "{{ .Values.schedulerName }}"
-      {{- end }}
+      terminationGracePeriodSeconds: 10
+      securityContext:
+        fsGroup: 10001
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: MSSQL_PID
-              value: "{{ .Values.edition }}"
+              value: "Express"
             - name: ACCEPT_EULA
-              value: 'Y'
-            - name: MSSQL_COLLATION
-              value: "{{ .Values.collation }}"
-            - name: MSSQL_LCID
-              value: "{{ .Values.lcid }}"
+              value: "Y"
             - name: SA_PASSWORD
               valueFrom:
                secretKeyRef:
                  name: {{ template "mssql.secret" . }}
                  key: {{ template "mssql.passwordKey" . }}
-            - name: MSSQL_ENABLE_HADR
-              value: "{{ .Values.hadr }}"
-            - name: MSSQL_AGENT_ENABLED
-              value: {{ .Values.agent.enabled | quote }}
-            - name: MSSQL_DATA_DIR
-              value: /mssql-data/data
-            {{ if .Values.resources.limits.memory }}
-            - name: MSSQL_MEMORY_LIMIT_MB
-              valueFrom:
-                resourceFieldRef:
-                  resource: limits.memory
-                  divisor: 1Mi
-            {{ end }}
           ports:
             - name: mssql
               containerPort: {{ .Values.service.port }}
           volumeMounts:
             - name: data
-              mountPath: /mssql-data/data
+              mountPath: /var/opt/mssql
           livenessProbe:
              tcpSocket:
                port: mssql
@@ -78,35 +63,12 @@ spec:
              periodSeconds: {{ .Values.readinessprobe.periodSeconds }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
-    {{- if .Values.image.pullSecrets }}
-      imagePullSecrets:
-{{ toYaml .Values.image.pullSecrets | indent 8 }}
-    {{- end }}
-    {{- if .Values.nodeSelector }}
-      nodeSelector:
-{{ toYaml .Values.nodeSelector | indent 8 }}
-    {{- end }}
-    {{- if .Values.affinity }}
-      affinity:
-{{ toYaml .Values.affinity | indent 8 }}
-    {{- end }}
-    {{- if .Values.tolerations }}
-      tolerations:
-{{ toYaml .Values.tolerations | indent 8 }}
-    {{- end }}
-    {{- if .Values.securityContext }}
-      securityContext:
-{{ toYaml .Values.securityContext | indent 8 }}
-    {{- end }}
+
       volumes:
-      - name: data
+      - name: mssqldb
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
-          {{- if .Values.persistence.existingDataClaim }}
-          claimName: {{ .Values.persistence.existingDataClaim }}
-          {{- else }}
-          claimName: {{ template "mssql.fullname" . }}-data
-          {{- end -}}
+          claimName: {{ template "mssql.name" . }}-data
       {{- else }}
         emptyDir: {}
       {{- end }}
