@@ -23,4 +23,3 @@ spec:
       protocol: TCP
   selector:
     app: {{ template "octopus.name" . }}
-    release: {{ .Release.Name }}
