@@ -56,13 +56,13 @@ spec:
               fieldRef:
                 fieldPath: metadata.name
           - name: DB_CONNECTION_STRING
-            value: "Server={{ .Values.mssql.host }},{{ .Values.mssql.port }};Database=Octopus;User Id=SA;Password={{ .Values.mssql.password }}"
+            value: Server=mssql,1433;Database=Octopus;User Id=SA;Password=Password01!
           - name: ADMIN_USERNAME
-            value: "{{ .Values.admin.username }}"
+            value: admin
           - name: ADMIN_PASSWORD
-            value: "{{ .Values.admin.password }}"
+            value: Password01!
           - name: ADMIN_EMAIL
-            value: "{{ .Values.admin.email }}"
+            value: admin@example.org
 {{ if .Values.secret.license }}
           - name: OCTOPUS_SERVER_BASE64_LICENSE
             valueFrom:
