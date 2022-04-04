@@ -6,11 +6,11 @@ metadata:
     app: {{ template "octopus.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}  
+    heritage: {{ .Release.Service }}
 {{- if .Values.service.labels }}
 {{ toYaml .Values.service.labels | indent 4 }}
 {{- end }}
-{{- if .Values.service.annotations }}    
+{{- if .Values.service.annotations }}
   annotations:
 {{ toYaml .Values.service.annotations | indent 4 }}
 {{- end }}
@@ -19,7 +19,7 @@ spec:
   ports:
     - name: web
       port: {{ .Values.service.port }}
-      targetPort: web
+      targetPort: {{ .Values.service.port }}
       protocol: TCP
   selector:
     app: {{ template "octopus.name" . }}

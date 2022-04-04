@@ -1,4 +1,3 @@
-{{- if and .Values.persistence.enabled (not .Values.persistence.existingDataClaim) }}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -14,15 +13,7 @@ metadata:
 {{- end }}
 spec:
   accessModes:
-    - {{ .Values.persistence.dataAccessMode | quote }}
+    - ReadWriteOnce
   resources:
     requests:
       storage: {{ .Values.persistence.dataSize | quote }}
-{{- if .Values.persistence.storageClass }}
-{{- if (eq "-" .Values.persistence.storageClass) }}
-  storageClassName: ""
-{{- else }}
-  storageClassName: "{{ .Values.persistence.storageClass }}"
-{{- end }}
-{{- end }}
-{{- end -}}      

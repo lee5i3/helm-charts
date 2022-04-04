@@ -19,7 +19,7 @@ spec:
     matchLabels:
       app: {{ template "octopus.name" . }}
   serviceName: {{ template "octopus.name" . }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   template:
     metadata:
       labels:
@@ -76,7 +76,7 @@ spec:
                 name: {{ template "octopus.secret" . }}
                 key: masterKey
         ports:
-        - containerPort: 8080
+        - containerPort: {{ .Values.service.port }}
           name: web
         volumeMounts:
         - name: octopus-storage-vol
