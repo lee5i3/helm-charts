@@ -10,10 +10,10 @@ metadata:
 {{- if .Values.deployment.labels }}
 {{ toYaml .Values.deployment.labels | indent 4 }}
 {{- end }}
-{{- if .Values.deployment.annotations }}   
+{{- if .Values.deployment.annotations }}
   annotations:
 {{ toYaml .Values.deployment.annotations | indent 4 }}
-{{- end }} 
+{{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -25,17 +25,10 @@ spec:
       labels:
         app: {{ template "mssql.name" . }}
         release: {{ .Release.Name }}
-{{- if .Values.pod.labels }}
-{{ toYaml .Values.pod.labels | indent 8 }}
-{{- end }}
-{{- if .Values.pod.annotations }}
-      annotations:
-{{ toYaml .Values.pod.annotations | indent 8 }}
-{{- end }}
     spec:
       {{- if .Values.schedulerName }}
       schedulerName: "{{ .Values.schedulerName }}"
-      {{- end }}    
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -48,7 +41,7 @@ spec:
             - name: MSSQL_COLLATION
               value: "{{ .Values.collation }}"
             - name: MSSQL_LCID
-              value: "{{ .Values.lcid }}"              
+              value: "{{ .Values.lcid }}"
             - name: SA_PASSWORD
               valueFrom:
                secretKeyRef:
@@ -57,16 +50,16 @@ spec:
             - name: MSSQL_ENABLE_HADR
               value: "{{ .Values.hadr }}"
             - name: MSSQL_AGENT_ENABLED
-              value: {{ .Values.agent.enabled | quote }}                 
+              value: {{ .Values.agent.enabled | quote }}
             - name: MSSQL_DATA_DIR
-              value: /mssql-data/data              
+              value: /mssql-data/data
             {{ if .Values.resources.limits.memory }}
             - name: MSSQL_MEMORY_LIMIT_MB
               valueFrom:
                 resourceFieldRef:
                   resource: limits.memory
                   divisor: 1Mi
-            {{ end }}              
+            {{ end }}
           ports:
             - name: mssql
               containerPort: {{ .Values.service.port }}
@@ -83,7 +76,7 @@ spec:
                port: mssql
              initialDelaySeconds: {{ .Values.readinessprobe.initialDelaySeconds }}
              periodSeconds: {{ .Values.readinessprobe.periodSeconds }}
-          resources:              
+          resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- if .Values.image.pullSecrets }}
       imagePullSecrets:
@@ -116,4 +109,4 @@ spec:
           {{- end -}}
       {{- else }}
         emptyDir: {}
-      {{- end }}              
+      {{- end }}

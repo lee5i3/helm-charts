@@ -1,4 +1,0 @@
-dependencies:
-  - name: mssql
-    version: 1.0.1
-    repository: https://lee5i3.github.io/helm-charts

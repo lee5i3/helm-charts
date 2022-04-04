@@ -15,6 +15,7 @@ statefulset:
   labels: {}
 
 secret:
+  # existingSecret:
   masterKey: {}
   admin:
     username: "admin"
