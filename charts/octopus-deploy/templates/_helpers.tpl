@@ -27,8 +27,8 @@ If release name contains chart name it will be used as a full name.
 Create the name for the master key secret.
 */}}
 {{- define "octopus.secret" -}}
-{{- if .Values.existingSecret -}}
-  {{- .Values.existingSecret -}}
+{{- if .Values.secret.existingSecret -}}
+  {{- .Values.secret.existingSecret -}}
 {{- else -}}
   {{- include "octopus.fullname" . -}}-secret
 {{- end -}}
