@@ -56,22 +56,13 @@ spec:
               fieldRef:
                 fieldPath: metadata.name
           - name: DB_CONNECTION_STRING
-            value: "Server=mssql,1433;Database=Octopus;User Id=SA;Password={{ .Values.mssql.sapassword }}"
+            value: "Server={{ .Values.mssql.host }},{{ .Values.mssql.port }};Database=Octopus;User Id=SA;Password={{ .Values.mssql.password }}"
           - name: ADMIN_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: {{ template "octopus.secret" . }}
-                key: admin_username
+            value: "{{ .Values.admin.username }}"
           - name: ADMIN_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: {{ template "octopus.secret" . }}
-                key: admin_password
+            value: "{{ .Values.admin.password }}"
           - name: ADMIN_EMAIL
-            valueFrom:
-              secretKeyRef:
-                name: {{ template "octopus.secret" . }}
-                key: admin_email
+            value: "{{ .Values.admin.email }}"
           - name: OCTOPUS_SERVER_BASE64_LICENSE
             valueFrom:
               secretKeyRef:

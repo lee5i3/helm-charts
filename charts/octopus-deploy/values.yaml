@@ -17,10 +17,11 @@ statefulset:
 secret:
   # existingSecret:
   masterKey: {}
-  admin:
-    username: "admin"
-    password: "admin"
-    email: "admin@example.com"
+
+admin:
+  username: "admin"
+  password: "admin"
+  email: "admin@example.com"
 
 ### Service
 service:
@@ -31,9 +32,7 @@ service:
 
 ## MSSQL
 mssql:
-  sapassword: "Password01!"
-
-  ## Persistent Volume
-  persistence:
-    dataSize: 50Gi
+  host: "mssql"
+  password: "ChangeMe"
+  port: 1433
 
