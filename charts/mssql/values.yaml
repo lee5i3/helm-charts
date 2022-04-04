@@ -7,9 +7,9 @@ agent:
 
 # Override sapassword in templates/secret.yaml
 secret:
-  # sapassword: "Password01!"
-  existingSecret: ""
-  existingSecretKey: sapassword
+  sapassword: "Password01!"
+  # existingSecret: ""
+  # existingSecretKey: sapassword
 
 image:
   repository: mcr.microsoft.com/mssql/server
@@ -43,7 +43,7 @@ persistence:
   # existingDataClaim:
   storageClass: ""
   dataAccessMode: ReadWriteOnce
-  dataSize: 8Gi
+  dataSize: 50Gi
 
 livenessprobe:
   initialDelaySeconds: 15

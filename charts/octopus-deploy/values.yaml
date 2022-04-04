@@ -17,6 +17,7 @@ statefulset:
 secret:
   # existingSecret:
   masterKey: {}
+  license: {}
 
 admin:
   username: "admin"
@@ -33,6 +34,6 @@ service:
 ## MSSQL
 mssql:
   host: "mssql"
-  password: "ChangeMe"
+  password: "Password01!"
   port: 1433
 
