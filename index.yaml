@@ -35,6 +35,14 @@ entries:
     version: 1.0.0
   octopus-deploy:
   - apiVersion: v2
+    created: "2022-04-04T02:16:12.799814728Z"
+    description: Octopus Deploy
+    digest: 4fdc3d03a6539228f4476b892b8191519ee681a51ee2abd92cadde669bb0b1df
+    name: octopus-deploy
+    urls:
+    - https://github.com/lee5i3/helm-charts/releases/download/octopus-deploy-0.1.4/octopus-deploy-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
     created: "2022-04-04T02:06:28.418878557Z"
     description: Octopus Deploy
     digest: a66c6c5bc4e25084e6129a972ce5a4d88fc0da5f5b7023ba72ab94d35d166aee
@@ -72,4 +80,4 @@ entries:
     urls:
     - https://github.com/lee5i3/helm-charts/releases/download/octopus-deploy-0.1.0/octopus-deploy-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-04T02:06:28.418912357Z"
+generated: "2022-04-04T02:16:12.799851628Z"
