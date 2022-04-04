@@ -49,7 +49,7 @@ spec:
             - name: mssql
               containerPort: {{ .Values.service.port }}
           volumeMounts:
-            - name: data
+            - name: mssqldb
               mountPath: /var/opt/mssql
           livenessProbe:
              tcpSocket:
@@ -66,9 +66,5 @@ spec:
 
       volumes:
       - name: mssqldb
-      {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
           claimName: {{ template "mssql.name" . }}-data
-      {{- else }}
-        emptyDir: {}
-      {{- end }}
