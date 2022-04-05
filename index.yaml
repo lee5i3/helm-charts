@@ -57,6 +57,15 @@ entries:
     urls:
     - https://github.com/lee5i3/helm-charts/releases/download/mssql-1.0.0/mssql-1.0.0.tgz
     version: 1.0.0
+  nginx-proxy-manager:
+  - apiVersion: v2
+    created: "2022-04-05T17:20:38.046543356Z"
+    description: Nginx Proxy Manager
+    digest: 773a1b2e8b42750ed62bb7ccd0ada3a295ee70bc37ba5deee928f8588b0f085d
+    name: nginx-proxy-manager
+    urls:
+    - https://github.com/lee5i3/helm-charts/releases/download/nginx-proxy-manager-0.1.0/nginx-proxy-manager-0.1.0.tgz
+    version: 0.1.0
   octopus-deploy:
   - apiVersion: v2
     created: "2022-04-04T14:31:28.019872584Z"
@@ -136,4 +145,4 @@ entries:
     urls:
     - https://github.com/lee5i3/helm-charts/releases/download/octopus-deploy-0.1.0/octopus-deploy-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-04T14:31:28.019924984Z"
+generated: "2022-04-05T17:20:38.046583846Z"
