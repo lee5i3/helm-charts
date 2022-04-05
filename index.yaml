@@ -68,6 +68,14 @@ entries:
     version: 0.1.0
   octopus-deploy:
   - apiVersion: v2
+    created: "2022-04-05T17:42:07.553142722Z"
+    description: Octopus Deploy
+    digest: ccd5aa0e7c8a124d0917ff130278ea66e7bedd3acf66fe3191c5f3812a601df5
+    name: octopus-deploy
+    urls:
+    - https://github.com/lee5i3/helm-charts/releases/download/octopus-deploy-0.1.9/octopus-deploy-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
     created: "2022-04-04T14:31:28.019872584Z"
     description: Octopus Deploy
     digest: 223aa3b51323847bdaa120d886dda65a2bce850cbc16db1c4f9868569e05545a
@@ -145,4 +153,13 @@ entries:
     urls:
     - https://github.com/lee5i3/helm-charts/releases/download/octopus-deploy-0.1.0/octopus-deploy-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-05T17:20:38.046583846Z"
+  octopus-worker:
+  - apiVersion: v2
+    created: "2022-04-05T17:42:07.755175199Z"
+    description: Octopus Deploy Worker
+    digest: ba6389b07bd7231ce30a1ee74c33f4b372131ca1ff76623cce87c0f70bd2b135
+    name: octopus-worker
+    urls:
+    - https://github.com/lee5i3/helm-charts/releases/download/octopus-worker-0.1.0/octopus-worker-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-04-05T17:42:07.755239899Z"
