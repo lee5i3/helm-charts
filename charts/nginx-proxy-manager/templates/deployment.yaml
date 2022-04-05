@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "nginx.fullname" . }}
+  labels:
+    app: {{ template "nginx.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+{{- if .Values.deployment.labels }}
+{{ toYaml .Values.deployment.labels | indent 4 }}
+{{- end }}
+{{- if .Values.deployment.annotations }}
+  annotations:
+{{ toYaml .Values.deployment.annotations | indent 4 }}
+{{- end }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "nginx.name" . }}
+      release: {{ .Release.Name }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "nginx.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      terminationGracePeriodSeconds: 10
+      securityContext:
+        fsGroup: 10001
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.ports.http }}
+            - name: https
+              containerPort: {{ .Values.ports.https }}
+            - name: admin
+              containerPort: {{ .Values.ports.admin }}
+          volumeMounts:
+            - name: nginx-storage-vol
+              mountPath: /data
+              subPath: data
+            - name: nginx-storage-vol
+              mountPath: /etc/letsencrypt
+              subPath: letsencrypt
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+
+      volumes:
+      - name: nginx-storage-vol
+        persistentVolumeClaim:
+          claimName: {{ template "nginx.name" . }}-data

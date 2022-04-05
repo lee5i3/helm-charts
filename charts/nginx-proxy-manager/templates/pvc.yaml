@@ -1,0 +1,19 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ template "nginx.fullname" . }}-data
+  labels:
+    app: {{ template "nginx.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+{{- if .Values.persistence.annotations }}
+  annotations:
+{{ toYaml .Values.persistence.annotations | indent 4 }}
+{{- end }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.persistence.dataSize | quote }}

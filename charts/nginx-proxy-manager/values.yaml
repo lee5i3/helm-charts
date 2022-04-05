@@ -1,0 +1,33 @@
+## Persistent Volume
+persistence:
+  dataAccessMode: ReadWriteOnce
+  dataSize: 5Gi
+
+image:
+  repository: jc21/nginx-proxy-manager
+  tag: latest
+  pullPolicy: IfNotPresent
+
+## Deployment
+deployment:
+  annotations: {}
+  labels: {}
+
+
+ports:
+  http: 80
+  https: 443
+  admin: 81
+
+service:
+  annotations: {}
+  labels: {}
+  type: LoadBalancer
+
+resources:
+  limits: {}
+  #  cpu: 100m
+  #  memory: 300Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 300Mi
