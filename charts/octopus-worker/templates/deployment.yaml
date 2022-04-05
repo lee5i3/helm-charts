@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "chart.fullname" . }}
+  labels:
+    app: {{ template "chart.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+{{- if .Values.deployment.labels }}
+{{ toYaml .Values.deployment.labels | indent 4 }}
+{{- end }}
+{{- if .Values.deployment.annotations }}
+  annotations:
+{{ toYaml .Values.deployment.annotations | indent 4 }}
+{{- end }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "chart.name" . }}
+      release: {{ .Release.Name }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "chart.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      terminationGracePeriodSeconds: 10
+      securityContext:
+        fsGroup: 10001
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            privileged: true
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: ServerApiKey
+              value: {{ .Values.config.server.key }}
+            - name: ServerUrl
+              value: {{ .Values.config.server.url }}
+            - name: TargetWorkerPool
+              value: {{ .Values.config.workerPool }}
+            - name: ServerPort
+              value: {{ .Values.config.server.port }}
+            - name: Space
+              value: {{ .Values.config.spaceName }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.ports.http }}
+            - name: https
+              containerPort: {{ .Values.ports.https }}
+            - name: admin
+              containerPort: {{ .Values.ports.admin }}
+          resources:
+{{ toYaml .Values.resources | indent 12 }}

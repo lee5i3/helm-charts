@@ -76,8 +76,10 @@ spec:
                 name: {{ template "octopus.secret" . }}
                 key: masterKey
         ports:
-        - containerPort: {{ .Values.service.port }}
-          name: web
+        - name: web
+          containerPort: {{ .Values.service.port }}
+        - name: tentacle
+          containerPort: 10943
         volumeMounts:
         - name: octopus-storage-vol
           mountPath: /artifacts

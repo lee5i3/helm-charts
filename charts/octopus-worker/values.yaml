@@ -1,0 +1,36 @@
+
+image:
+  repository: octopusdeploy/tentacle
+  tag: latest
+  pullPolicy: IfNotPresent
+
+## Deployment
+deployment:
+  annotations: {}
+  labels: {}
+
+config:
+  server:
+    key: "API-ON9VALPOA0KKSIWNRU3LE69FGPKEMG"
+    url: "https://deploy.leehull.com"
+    port: "10943"
+  workerPool: "Default Worker Pool"
+  spaceName: "Default"
+
+ports:
+  http: 80
+  https: 443
+  admin: 81
+
+service:
+  annotations: {}
+  labels: {}
+  type: LoadBalancer
+
+resources:
+  limits: {}
+  #  cpu: 100m
+  #  memory: 300Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 300Mi
