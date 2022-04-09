@@ -11,11 +11,11 @@ deployment:
 
 config:
   server:
-    key: "API-ON9VALPOA0KKSIWNRU3LE69FGPKEMG"
-    url: "https://deploy.leehull.com"
-    port: "10943"
-  workerPool: "Default Worker Pool"
-  spaceName: "Default"
+    key: ""
+    url: ""
+    port: ""
+  workerPool: ""
+  spaceName: ""
 
 ports:
   http: 80

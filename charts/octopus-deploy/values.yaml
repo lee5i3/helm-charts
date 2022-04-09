@@ -21,7 +21,7 @@ secret:
 
 admin:
   username: "admin"
-  password: "admin"
+  password: "Password01!"
   email: "admin@example.com"
 
 ### Service
@@ -29,11 +29,10 @@ service:
   annotations: {}
   labels: {}
   type: LoadBalancer
-  port: 8080
+  ports:
+    web: 8080
+    tentacle: 10943
 
 ## MSSQL
 mssql:
-  host: "mssql"
-  password: "Password01!"
-  port: 1433
-
+  connectionString: "Server=mssql,1433;Database=Octopus;User Id=SA;Password=Password01!"

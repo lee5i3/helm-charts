@@ -56,13 +56,13 @@ spec:
               fieldRef:
                 fieldPath: metadata.name
           - name: DB_CONNECTION_STRING
-            value: Server=mssql,1433;Database=Octopus;User Id=SA;Password=Password01!
+            value: "{{ .Values.mssql.connectionString }}"
           - name: ADMIN_USERNAME
-            value: admin
+            value: "{{ .Values.admin.username }}"
           - name: ADMIN_PASSWORD
-            value: Password01!
+            value: "{{ .Values.admin.password }}"
           - name: ADMIN_EMAIL
-            value: admin@example.org
+            value: "{{ .Values.admin.email }}"
 {{ if .Values.secret.license }}
           - name: OCTOPUS_SERVER_BASE64_LICENSE
             valueFrom:
@@ -77,9 +77,9 @@ spec:
                 key: masterKey
         ports:
         - name: web
-          containerPort: {{ .Values.service.port }}
+          containerPort: {{ .Values.service.ports.web }}
         - name: tentacle
-          containerPort: 10943
+          containerPort: {{ .Values.service.ports.tentacle }}
         volumeMounts:
         - name: octopus-storage-vol
           mountPath: /artifacts

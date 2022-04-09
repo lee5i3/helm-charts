@@ -39,21 +39,14 @@ spec:
             - name: ACCEPT_EULA
               value: "Y"
             - name: ServerApiKey
-              value: {{ .Values.config.server.key }}
+              value: "{{ .Values.config.server.key }}"
             - name: ServerUrl
-              value: {{ .Values.config.server.url }}
+              value: "{{ .Values.config.server.url }}"
             - name: TargetWorkerPool
-              value: {{ .Values.config.workerPool }}
+              value: "{{ .Values.config.workerPool }}"
             - name: ServerPort
-              value: {{ .Values.config.server.port }}
+              value: "{{ .Values.config.server.port }}"
             - name: Space
-              value: {{ .Values.config.spaceName }}
-          ports:
-            - name: http
-              containerPort: {{ .Values.ports.http }}
-            - name: https
-              containerPort: {{ .Values.ports.https }}
-            - name: admin
-              containerPort: {{ .Values.ports.admin }}
+              value: "{{ .Values.config.spaceName }}"
           resources:
 {{ toYaml .Values.resources | indent 12 }}

@@ -18,11 +18,11 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - name: web
-      port: {{ .Values.service.port }}
+      port: {{ .Values.service.ports.web }}
       targetPort: web
       protocol: TCP
     - name: tentacle
-      port: 10943
+      port: {{ .Values.service.ports.tentacle }}
       targetPort: tentacle
       protocol: TCP
   selector:
